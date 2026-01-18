@@ -1,0 +1,12 @@
+node_modules
+.next
+dist
+build
+.git
+.gitignore
+Dockerfile
+docker-compose.yml
+README.md
+npm
+bun.lock
+.env

@@ -31,3 +31,21 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 The key generation uses the formula: `y = 0xFA266148 - x (mod 2³²)`
 
 where `x` is the program reference and `y` is the generated key.
+
+## Docker (production)
+
+Build the production image and run it locally:
+
+```bash
+# build image
+docker build -t cognex-key-generator:latest .
+
+# run container
+docker run --rm -p 3000:3000 cognex-key-generator:latest
+```
+
+Or use docker-compose:
+
+```bash
+docker-compose up --build
+```
