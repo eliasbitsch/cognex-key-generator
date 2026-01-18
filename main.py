@@ -46,6 +46,10 @@ def gen(x: int) -> int:
     if (x & 0x38000000) == 0x38000000:
         xor_val ^= 0x80000000
     
+    # (4-11) all set
+    if (x & 0xff0) == 0xff0:
+        xor_val ^= 0x0821a100
+    
     C = BASE ^ xor_val
     return (C - x) & 0xFFFFFFFF
 

@@ -71,10 +71,15 @@ export function generateCognexKey(hexInput: string): string {
       xorVal ^= 0x80000000
     }
     
-    const C = (BASE ^ xorVal) >>> 0
-    const y = (C - x) & 0xFFFFFFFF
+    // (4-11) all set
+    if ((x & 0xff0) === 0xff0) {
+      xorVal ^= 0x0821a100
+    }
     
-    // Return as 8-character hex string
+    const C = (BASE ^ xorVal) >>> 0
+    const y = ((C - x) & 0xFFFFFFFF) >>> 0
+    
+    // Return as 8-character hex string (ensure unsigned)
     return y.toString(16).padStart(8, '0')
   } catch (error) {
     throw error
